@@ -1,0 +1,14 @@
+1. Introduction of project- what it does, for what community, what features, what domain
+2. Motivation behind it
+3. Impact if any
+4. Techstacks- technologies, tools, process-agile, architecture- two tier three tier, platform
+5. why this? why not flask? why not other db? Why not other backend languages?
+6. Tech challenges- 
+7. project basic challenges
+8. Future improvements
+9. What is MVT template ? 
+10. what is the flow of the execution?
+11. How is data incorporating?
+12. future implementation of search bar suggestions? chat bots? company date registration?
+13. Learnings and mistakes.
+14. Deploy the project

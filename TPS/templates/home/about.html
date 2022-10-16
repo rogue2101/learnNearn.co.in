@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block headstuff %}
+
+<style>
+        
+    /*----------------------------------------# Team------------------------------------------*/
+    .team {
+        background: #fff;
+        padding: 60px 0;
+    }
+
+    .team .member {
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team .member .member-img {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .team .member .social {
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        right: 0;
+        opacity: 0;
+        transition: ease-in-out 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team .member .social a {
+        transition: color 0.3s;
+        color: #353535;
+        margin: 0 3px;
+        border-radius: 50px;
+        width: 36px;
+        height: 36px;
+        background: rgba(78, 144, 192, 0.8);
+        display: inline-block;
+        transition: ease-in-out 0.3s;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team .member .social a:hover {
+        background: #3498db;
+    }
+
+    .team .member .social i {
+        font-size: 18px;
+        line-height: 0;
+    }
+
+    .team .member .member-info {
+        padding: 25px 15px;
+    }
+
+    .team .member .member-info h4 {
+        font-weight: 700;
+        margin-bottom: 5px;
+        font-size: 18px;
+        color: #353535;
+    }
+
+    .team .member .member-info span {
+        display: block;
+        font-size: 13px;
+        font-weight: 400;
+        color: #aaaaaa;
+    }
+
+    .team .member .member-info p {
+        font-style: italic;
+        font-size: 14px;
+        line-height: 26px;
+        color: #777777;
+    }
+
+    .team .member:hover .social {
+        opacity: 1;
+        bottom: 15px;
+    }
+
+    /*----------------------# Sections General-----------------------------------*/
+    section {
+        padding: 60px 0;
+        overflow: hidden;
+    }
+
+    .section-title {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .section-title h2 {
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        padding: 8px 20px;
+        margin: 0;
+        background: #f3f8ec;
+        color: #3498db;
+        display: inline-block;
+        text-transform: uppercase;
+        border-radius: 50px;
+    }
+
+    .section-title h3 {
+        margin: 15px 0 0 0;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .section-title h3 span {
+        color: #3498db;
+    }
+
+    .section-title p {
+        margin: 15px auto 0 auto;
+        font-weight: 600;
+    }
+
+    @media (min-width: 1024px) {
+        .section-title p {
+            width: 50%;
+        }
+    }
+
+
+</style>
+
+    
+{% endblock headstuff %}
+
+{% block title %}About{% endblock title %}
+
+{% block body %}
+
+    <!-- About Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-aos="zoom-in" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-3">
+                        <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
+                        <h1 class="mb-0">The Best Placement environment to kickstart your career and get trained</h1>
+                    </div>
+                    <p class="mb-4">Kickstart your career at LearnNEarn with multiple internships and jobs that can pave your path for an amazingly bright career path. We at LearnNEarn are a group of of scholars who struggled to find best internships and offers, while upskilling themselves. Thus we don not want any fresher to be left without experiences.</p>
+                    <div class="row g-0 mb-3">
+                        <div class="col-sm-6 wow zoomIn" data-aos="fade-up" data-wow-delay="0.2s">
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Interview Questions</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Easy cheatsheets</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Train and Notes</h5>
+                        </div>
+                        <div class="col-sm-6 wow zoomIn" data-aos="fade-up" data-wow-delay="0.4s">
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Build your Resume</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Fresher jobs</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Internships</h5>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4 wow fadeIn" data-aos="fade-up" data-wow-delay="0.6s">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                            <i class="fa fa-phone-alt text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="mb-2">Call to ask any question</h5>
+                            <h4 class="text-primary mb-0">+91 8574780959</h4>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-aos="fade-up" data-wow-delay="0.9s">Send a query</a>
+                </div>
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100" data-aos="fade-up">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="/static/img/about.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container">
+
+            <div class="section-title" data-aos="zoom-in">
+                <h2>Team</h2>
+                <h3>Meet Our Passionate Team <span>Team</span></h3>
+                <p>Our efficient team of seniors is determined to provide the upcoming
+                    students with all new learning platforms incorporated with services
+                    and resources required for academic as well as practical excellence.
+                    We want each and every student to have skills as well as experiences that prevent them to be ruled
+                    out by anyone.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up">
+                        <div class="member-img">
+                            <img src="/static/img/team/team11.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Anjali Singh</h4>
+                            <span>Chief Executive Officer</span>
+                            <p>
+                                Anjali is enthusiastic about web development. She practices with
+                                various languages and has built numerous projects with them. She
+                                worked with LearnNEarn timely and progressively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member-img">
+                            <img src="/static/img/team/team.png" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Rajpriya Singh</h4>
+                            <span>Product Manager</span>
+                            <p>
+                                Rajpriya is a programming enthusiast who is excellent at
+                                problem-solving skills. He worked efficiently and passionately with the
+                                team to make the LearnNEarn reach its goal.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member-img">
+                            <img src="/static/img/team/team3.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Priyanshu</h4>
+                            <span>CTO</span>
+                            <p>
+                                Priyanshu aims to better with technology. His experience and work beliefs made working
+                                with him very impressive.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member-img">
+                            <img src="/static/img/team/team4444.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Bhavya Bhagwani</h4>
+                            <span>Accountant</span>
+                            <p>
+                                Bhavya is good at her presentation and writing skills and is eager to learn new skills.
+                                With her skill of writing and programming concepts she worked efficiently and
+                                passionately for LearnNEarn to make it work.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+  
+    
+{% endblock body %}
