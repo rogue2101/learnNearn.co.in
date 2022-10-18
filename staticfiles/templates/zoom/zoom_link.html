@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}zoom link{% endblock title %}
+{% block body %}
+{% for d in data %}
+<div class="card text-center m-5">
+    <h5 class="card-header">{{ d.title }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Created By : {{ d.created_by }}</h5>
+      <p class="card-text">Meeting ID: {{ d.meeting_id }}</p>
+      <p class="card-text">Meeting Time: {{ d.meeting_time }}</p>
+      <p class="card-text">Meeting Date: {{ d.meeting_date }}</p>
+      <a href="{{ d.meeting_link }}" class="btn btn-primary" target="_blank" >Join Meeting</a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock body %}

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% block title %}Edit details{% endblock title %}
+{% block headstuff %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/student_dashbord_style.css" />
+
+{% endblock headstuff %}
+{% block body %}  
+    {% for d in data_show %}
+    <form method="post" action="/edit_details/" class="row p-5 my-2" id="profile">
+        {% csrf_token %}
+        <!-- personal detail -->
+        <div class="bg-primary p-2 m-2 text-center rounded"><h3>Personal Details</h3></div>
+            <div class="row p-2">
+              <div class="col">
+                  <label class="p-2">ID</label>
+                  <input type="text" class="form-control" value="{{ d.collage_id }}" aria-label="ID" name="collageid" readonly>
+              </div>
+              <div class="col">
+                  <label class="p-2">Name</label>
+                  <input type="text" class="form-control" value="{{ d.sname }}" aria-label="Name" name="sname" readonly>
+              </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col">
+                    <label class="p-2">Father's Name</label>
+                    <input type="text" class="form-control" value="{{ d.fname }}" aria-label="Father's Name" name="fname" readonly>
+                </div>
+                <div class="col">
+                    <label class="p-2">Mother's Name</label>
+                    <input type="text" class="form-control" value="{{ d.mname }}" aria-label="Mother's Name" name="mname" readonly>
+                </div>
+            </div>
+
+
+            <div class="row p-2">
+                <div class="col">
+                    <label class="p-2">Date Of Birth</label>
+                    <input type="text" class="form-control" value="{{ d.dob }}" aria-label="Date Of Birth" name="dob" readonly>
+                </div>
+                <div class="col">
+                    <label class="p-2">Phone Number</label>
+                    <input type="text" class="form-control" value="{{ d.pnum }}" aria-label="Phone Number" name="pnum">
+                  </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col">
+                    <label class="p-2">Gender</label>
+                    <input type="text" class="form-control" value="{{ d.gender }}" aria-label="Gender" name="gender" readonly>
+                </div>
+                <div class="col">
+                    <label class="p-2">State</label>
+                    <select type="" class="form-control" aria-label="State" name="state">
+                        <option class="text-black" value="Andhra Pradesh" {% if d.state == 'Andhra Pradesh' %}selected{% endif %}>Andhra Pradesh</option>
+                        <option class="text-black" value="Maharashtra" {% if d.state == 'Maharashtra' %}selected{% endif %}>Maharashtra</option>
+                        <option class="text-black" value="Uttar Pradesh" {% if d.state == 'Uttar Pradesh' %}selected{% endif %}>Uttar Pradesh</option>
+                        <option class="text-black" value="Bihar" {% if d.state == 'Bihar' %}selected{% endif %}>Bihar</option>
+                        <option class="text-black" value="Gujarat" {% if d.state == 'Gujarat' %}selected{% endif %}>Gujarat</option>
+                        <option class="text-black" value="Tamil Nadu" {% if d.state == 'Tamil Nadu' %}selected{% endif %}>Tamil Nadu</option>
+                        <option class="text-black" value="Karnataka" {% if d.state == 'Karnataka' %}selected{% endif %}>Karnataka</option>
+                        <option class="text-black" value="Harayana" {% if d.state == 'Harayana' %}selected{% endif %}>Harayana</option>
+                        <option class="text-black" value="Madhya Pradesh" {% if d.state == 'Madhya Pradesh' %}selected{% endif %}>Madhya Pradesh</option>
+                        <option class="text-black" value="Himachal Pradesh" {% if d.state == 'Himachal Pradesh' %}selected{% endif %}>Himachal Pradesh</option>
+                        <option class="text-black" value="Rajasthan" {% if d.state == 'Rajasthan' %}selected{% endif %}>Rajasthan</option>
+                        <option class="text-black" value="Kerela" {% if d.state == 'Kerela' %}selected{% endif %}>Kerela</option>
+                        <option class="text-black" value="West Bengal" {% if d.state == 'West Bengal' %}selected{% endif %}>West Bengal</option>
+                        <option class="text-black" value="Assam" {% if d.state == 'Assam' %}selected{% endif %}>Assam</option>
+                        <option class="text-black" value="Punjab" {% if d.state == 'Punjab' %}selected{% endif %}>Punjab</option>
+                        <option class="text-black" value="Jharkhand" {% if d.state == 'Jharkhand' %}selected{% endif %}>Jharkhand</option>
+                        <option class="text-black" value="Goa" {% if d.state == 'Goa' %}selected{% endif %}>Goa</option>
+                        <option class="text-black" value="Manipur" {% if d.state == 'Manipur' %}selected{% endif %}>Manipur</option>
+                        <option class="text-black" value="Megahalaya" {% if d.state == 'Megahalaya' %}selected{% endif %}>Megahalaya</option>
+                        <option class="text-black" value="Tripura" {% if d.state == 'Tripura' %}selected{% endif %}>Tripura</option>
+                        <option class="text-black" value="Mizoram" {% if d.state == 'Mizoram' %}selected{% endif %}>Mizoram</option>
+                        <option class="text-black" value="Sikkim" {% if d.state == 'Sikkim' %}selected{% endif %}>Sikkim</option>
+                        <option class="text-black" value="Arunachal Pradesh" {% if d.state == 'Arunachal Pradesh' %}selected{% endif %}>Arunachal Pradesh</option>
+                        <option class="text-black" value="Nagaland" {% if d.state == 'Nagaland' %}selected{% endif %}>Nagaland</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col">
+                    <label class="p-2">City</label>
+                    <input type="text" class="form-control" value="{{ d.scity }}" aria-label="City" name="scity">
+                </div>
+                <div class="col">
+                    <label class="p-2">Pin Code</label>
+                    <input type="text" class="form-control" value="{{ d.pincode }}" aria-label="Pin Code" name="pincode" >
+                  </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col">
+                    <label class="p-2">Email</label>
+                    <input type="text" class="form-control" value="{{ d.semail }}" aria-label="Email" name="semail" readonly>
+                </div>
+            </div>
+        <!-- personal detail ends -->
+
+        <!-- academic details -->
+        <div class="bg-primary p-2 m-2 text-center rounded"><h3>Academic Details</h3></div>
+
+        <h4>Highschool Details</h4>
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">School Name</label>
+              <input type="text" class="form-control" value="{{ d.hschool }}" aria-label="School" name="hschool"  >
+          </div>
+          <div class="col">
+              <label class="p-2">Session</label>
+              <input type="text" class="form-control" value="{{ d.hsession }}" aria-label="Session" name="hsession" >
+          </div>
+          <div class="col">
+              <label class="p-2">Percentage/CGPA</label>
+              <input type="text" class="form-control" value="{{ d.hper }}" aria-label="Percentage/CGPA" name="hper" >
+          </div>
+      </div>
+
+
+      <h4>Interschool Details</h4>
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">School Name</label>
+              <input type="text" class="form-control" value="{{ d.ischool }}" aria-label="School" name="ischool" >
+          </div>
+          <div class="col">
+              <label class="p-2">Session</label>
+              <input type="text" class="form-control" value="{{ d.isession }}" aria-label="Session" name="isession" >
+          </div>
+          <div class="col">
+              <label class="p-2">Percentage/CGPA</label>
+              <input type="text" class="form-control" value="{{ d.iper }}" aria-label="Percentage/CGPA" name="iper" >
+          </div>
+      </div>
+
+
+      <h4>Latest Qualification</h4>
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">Qualification Name</label>
+              <input type="text" class="form-control" value="{{ d.lqname }}" aria-label="Latest Qualification Name" name="lqname" >
+          </div>
+          <div class="col">
+              <label class="p-2">Qualification Type</label>
+              <select type="" class="form-control" aria-label="Qualification Type" name="lqtype">
+                <option class="text-black" value="Graduation" {% if d.lqtype == 'Graduation' %}selected{% endif %}>Graduation</option>
+                <option class="text-black" value="Post Graduation" {% if d.lqtype == 'Post Graduation' %}selected{% endif %}>Post Graduation</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">Institute Name</label>
+              <input type="text" class="form-control" value="{{ d.intname }}" aria-label="Institute Name" name="intname" >
+          </div>
+      </div>
+
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">Session</label>
+              <input type="text" class="form-control" value="{{ d.intsession }}" aria-label="Session" name="intsession" >
+          </div>
+          <div class="col">
+              <label class="p-2">Percentage/CGPA</label>
+              <input type="text" class="form-control" value="{{ d.intper }}" aria-label="Percentage/CGPA" name="intper" >
+          </div>
+      </div>
+
+      <!-- academic details ends -->
+
+      <!-- skills -->
+      <div class="bg-primary p-2 m-2 text-center rounded"><h3>Skills</h3></div>
+      <div class="row p-2">
+          <div class="col">
+              <label class="p-2">Your Skills</label>
+              <textarea type="text" class="form-control" id="exampleFormControlTextarea1" aria-label="Your Skills" name="skills" >{{ d.skills }}</textarea>
+          </div>
+      </div>
+      <!-- skills end -->
+      <div class="m-5 text-center">
+        <button class="btn btn-primary btn-lg" type="submit">Update</button>
+      </div>
+    </form>
+    {% endfor %}
+{% endblock body %}
+

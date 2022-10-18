@@ -1,0 +1,1366 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block headstuff %}
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+<!-- Vendor CSS Files -->
+<link href="/static/vendor/aos/aos.css" rel="stylesheet">
+<link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<style>
+    /*------------------------------------------# Header--------------------------------------------*/
+    #header {
+        height: 70px;
+        transition: all 0.5s;
+        z-index: 997;
+        transition: all 0.5s;
+        background: #0f0f0f;
+    }
+
+    #header .logo h1 {
+        font-size: 28px;
+        margin: 0;
+        padding: 11px 0;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-family: "Poppins", sans-serif;
+    }
+
+    #header .logo h1 a,
+    #header .logo h1 a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #header .logo img {
+        padding: 0;
+        margin: 0;
+        max-height: 40px;
+    }
+
+    .scrolled-offset {
+        margin-top: 70px;
+    }
+
+    /*-----------------------------# Navigation Menu------------------------------------*/
+    /*** Desktop Navigation */
+    .navbar {
+        padding: 0;
+    }
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+    }
+
+    .navbar li {
+        position: relative;
+    }
+
+    .navbar a,
+    .navbar a:focus {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0 10px 30px;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
+
+    .navbar a i,
+    .navbar a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+    }
+
+    .navbar a:hover,
+    .navbar .active,
+    .navbar .active:focus,
+    .navbar li:hover>a {
+        color: #3498db;
+        ;
+    }
+
+    .navbar .getstarted,
+    .navbar .getstarted:focus {
+        background: #3498db;
+        ;
+        padding: 8px 20px;
+        margin-left: 30px;
+        border-radius: 4px;
+        color: #fff;
+    }
+
+    .navbar .getstarted:hover,
+    .navbar .getstarted:focus:hover {
+        color: #fff;
+        background: #3498db;
+    }
+
+    .navbar .dropdown ul {
+        display: block;
+        position: absolute;
+        left: 14px;
+        top: calc(100% + 30px);
+        margin: 0;
+        padding: 10px 0;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        background: #fff;
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+        transition: 0.3s;
+        border-radius: 4px;
+    }
+
+    .navbar .dropdown ul li {
+        min-width: 200px;
+    }
+
+    .navbar .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: none;
+        color: #353535;
+    }
+
+    .navbar .dropdown ul a i {
+        font-size: 12px;
+    }
+
+    .navbar .dropdown ul a:hover,
+    .navbar .dropdown ul .active:hover,
+    .navbar .dropdown ul li:hover>a {
+        color: #3498db;
+        ;
+    }
+
+    .navbar .dropdown:hover>ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+    }
+
+    .navbar .dropdown .dropdown ul {
+        top: 0;
+        left: calc(100% - 30px);
+        visibility: hidden;
+    }
+
+    .navbar .dropdown .dropdown:hover>ul {
+        opacity: 1;
+        top: 0;
+        left: 100%;
+        visibility: visible;
+    }
+
+    @media (max-width: 1366px) {
+        .navbar .dropdown .dropdown ul {
+            left: -90%;
+        }
+
+        .navbar .dropdown .dropdown:hover>ul {
+            left: -100%;
+        }
+    }
+
+    /*** Mobile Navigation */
+    .mobile-nav-toggle {
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+        display: none;
+        line-height: 0;
+        transition: 0.5s;
+    }
+
+    @media (max-width: 991px) {
+        .mobile-nav-toggle {
+            display: block;
+        }
+
+        .navbar ul {
+            display: none;
+        }
+    }
+
+    .navbar-mobile {
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: rgba(28, 28, 28, 0.9);
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .navbar-mobile .mobile-nav-toggle {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    .navbar-mobile ul {
+        display: block;
+        position: absolute;
+        top: 55px;
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 0;
+        border-radius: 8px;
+        background-color: #fff;
+        overflow-y: auto;
+        transition: 0.3s;
+    }
+
+    .navbar-mobile a,
+    .navbar-mobile a:focus {
+        padding: 10px 20px;
+        font-size: 15px;
+        color: #353535;
+    }
+
+    .navbar-mobile a:hover,
+    .navbar-mobile .active,
+    .navbar-mobile li:hover>a {
+        color: #3498db;
+    }
+
+    .navbar-mobile .getstarted,
+    .navbar-mobile .getstarted:focus {
+        margin: 15px;
+    }
+
+    .navbar-mobile .dropdown ul {
+        position: static;
+        display: none;
+        margin: 10px 20px;
+        padding: 10px 0;
+        z-index: 99;
+        opacity: 1;
+        visibility: visible;
+        background: #fff;
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    }
+
+    .navbar-mobile .dropdown ul li {
+        min-width: 200px;
+    }
+
+    .navbar-mobile .dropdown ul a {
+        padding: 10px 20px;
+    }
+
+    .navbar-mobile .dropdown ul a i {
+        font-size: 12px;
+    }
+
+    .navbar-mobile .dropdown ul a:hover,
+    .navbar-mobile .dropdown ul .active:hover,
+    .navbar-mobile .dropdown ul li:hover>a {
+        color: #3498db;
+        ;
+    }
+
+    .navbar-mobile .dropdown>.dropdown-active {
+        display: block;
+    }
+
+
+    /*** Carousel ***/
+
+    /* .carousel-inner{
+        background: rgba(9, 30, 62, .7);
+        z-index: 1;
+    } */
+    .carousel-caption {
+        font-family: Nunito, sans-serif;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(9, 30, 62, .7);
+        z-index: 1;
+    }
+
+    @media (max-width: 576px) {
+        .carousel-caption h5 {
+            font-size: 14px;
+            font-weight: 500 !important;
+        }
+
+        .carousel-caption h1 {
+            font-size: 30px;
+            font-weight: 600 !important;
+        }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    /*-------------------------# Why Us-------------------------------*/
+    .why-us .box {
+        padding: 50px 30px;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        transition: all ease-in-out 0.3s;
+    }
+
+    .why-us .box span {
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        color: #3498db;
+    }
+
+    .why-us .box h4 {
+        font-size: 24px;
+        font-weight: 600;
+        padding: 0;
+        margin: 20px 0;
+        color: #353535;
+    }
+
+    .why-us .box p {
+        color: #919191;
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .why-us .box:hover {
+        background: #3498db;
+        padding: 30px 30px 70px 30px;
+        box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .why-us .box:hover span,
+    .why-us .box:hover h4,
+    .why-us .box:hover p {
+        color: #fff;
+    }
+
+
+    /*-------------------------# Counts--------------------------*/
+    .counts {
+        background: white;
+        padding: 30px 0 40px 0;
+    }
+
+    .counts .count-box {
+        padding: 30px 30px 25px 30px;
+        width: 100%;
+        position: relative;
+        text-align: center;
+        background: #fff;
+    }
+
+    .counts .count-box i {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        background: #3498db;
+        padding: 12px;
+        color: #fff;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+    }
+
+    .counts .count-box span {
+        font-size: 36px;
+        display: block;
+        font-weight: 600;
+        color: #124364;
+    }
+
+    .counts .count-box p {
+        padding: 0;
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        font-size: 14px;
+    }
+
+
+    /*----------------------# Sections General-----------------------------------*/
+    section {
+        padding: 60px 0;
+        overflow: hidden;
+    }
+
+    .section-title {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .section-title h2 {
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        padding: 8px 20px;
+        margin: 0;
+        background: #f3f8ec;
+        color: #3498db;
+        display: inline-block;
+        text-transform: uppercase;
+        border-radius: 50px;
+    }
+
+    .section-title h3 {
+        margin: 15px 0 0 0;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .section-title h3 span {
+        color: #3498db;
+    }
+
+    .section-title p {
+        margin: 15px auto 0 auto;
+        font-weight: 600;
+    }
+
+    @media (min-width: 1024px) {
+        .section-title p {
+            width: 50%;
+        }
+    }
+
+
+/*--------------------------------------------------------------
+# Testimonials
+--------------------------------------------------------------*/
+.testimonials {
+  padding: 50px 0;
+  background:  url("/static/footer-bg.jpg") fixed center center;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+}
+
+.testimonials::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(2, 2, 2, 0.7);
+}
+
+.testimonials .section-header {
+  margin-bottom: 20px;
+}
+
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item {
+  text-align: center;
+  color: #fff;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.15);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  color: #fff;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 18px;
+  color: #ddd;
+  margin: 0 0 15px 0;
+}
+.testimonials .testimonial-item p {
+  font-size: 18px;
+
+}
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 30px;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+  color: #eee;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #8fc04e;
+}
+
+@media (min-width: 992px) {
+  .testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+
+    /*----------------------------# Team--------------------------------------*/
+    .team {
+        background: #fff;
+        padding: 60px 0;
+    }
+
+    .team .member {
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team .member .member-img {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .team .member .social {
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        right: 0;
+        opacity: 0;
+        transition: ease-in-out 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team .member .social a {
+        transition: color 0.3s;
+        color: #353535;
+        margin: 0 3px;
+        border-radius: 50px;
+        width: 36px;
+        height: 36px;
+        background: rgba(78, 144, 192, 0.8);
+        display: inline-block;
+        transition: ease-in-out 0.3s;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team .member .social a:hover {
+        background: #3498db;
+    }
+
+    .team .member .social i {
+        font-size: 18px;
+        line-height: 0;
+    }
+
+    .team .member .member-info {
+        padding: 25px 15px;
+    }
+
+    .team .member .member-info h4 {
+        font-weight: 700;
+        margin-bottom: 5px;
+        font-size: 18px;
+        color: #353535;
+    }
+
+    .team .member .member-info span {
+        display: block;
+        font-size: 13px;
+        font-weight: 400;
+        color: #aaaaaa;
+    }
+
+    .team .member .member-info p {
+        font-style: italic;
+        font-size: 14px;
+        line-height: 26px;
+        color: #777777;
+    }
+
+    .team .member:hover .social {
+        opacity: 1;
+        bottom: 15px;
+    }
+
+
+    /*----------------------------------------# F.A.Q-------------------------------------*/
+    .faq {
+        background: #f5faf0;
+    }
+
+    .faq .section-title h2 {
+        background: #e9f3dd;
+    }
+
+    .faq .faq-list {
+        padding: 0 100px;
+    }
+
+    .faq .faq-list ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    .faq .faq-list li+li {
+        margin-top: 15px;
+    }
+
+    .faq .faq-list li {
+        padding: 20px;
+        background: #fff;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .faq .faq-list a {
+        display: block;
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+        padding: 0 30px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .faq .faq-list .icon-help {
+        font-size: 24px;
+        position: absolute;
+        right: 0;
+        left: 20px;
+        color: #cbe1ac;
+    }
+
+    .faq .faq-list .icon-show,
+    .faq .faq-list .icon-close {
+        font-size: 24px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .faq .faq-list p {
+        margin-bottom: 0;
+        padding: 10px 0 0 0;
+    }
+
+    .faq .faq-list .icon-show {
+        display: none;
+    }
+
+    .faq .faq-list a.collapsed {
+        color: #343a40;
+    }
+
+    .faq .faq-list a.collapsed:hover {
+        color: #3498db;
+        ;
+    }
+
+    .faq .faq-list a.collapsed .icon-show {
+        display: inline-block;
+    }
+
+    .faq .faq-list a.collapsed .icon-close {
+        display: none;
+    }
+
+    @media (max-width: 1200px) {
+        .faq .faq-list {
+            padding: 0;
+        }
+    }
+
+
+    /*-----------------# Footer-------------------------------*/
+    #footer {
+        color: #fff;
+        position: relative;
+        font-size: 14px;
+        background: url("/static/footer-bg.jpg") center center no-repeat;
+    }
+
+    #footer::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(15, 15, 15, 0.75);
+        z-index: 1;
+    }
+
+    /* #footer .footer-top {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 80px 0;
+    } */
+    #footer .footer-top {
+        position: relative;
+        padding: 60px 0 30px 0;
+        z-index: 2;
+    }
+
+    #footer .footer-top .footer-contact {
+        margin-bottom: 30px;
+    }
+
+    #footer .footer-top .footer-contact h4 {
+        font-size: 22px;
+        margin: 0 0 30px 0;
+        padding: 2px 0 2px 0;
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    #footer .footer-top .footer-contact p {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 0;
+        font-family: "Raleway", sans-serif;
+        color: #fff;
+    }
+
+    #footer .footer-top h4 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        position: relative;
+        padding-bottom: 12px;
+    }
+
+    #footer .footer-top .footer-links {
+        margin-bottom: 30px;
+    }
+
+    #footer .footer-top .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #footer .footer-top .footer-links ul i {
+        padding-right: 2px;
+        color: #3498db;
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    #footer .footer-top .footer-links ul li {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    #footer .footer-top .footer-links ul li:first-child {
+        padding-top: 0;
+    }
+
+    #footer .footer-top .footer-links ul a {
+        color: #fff;
+        transition: 0.3s;
+        display: inline-block;
+        line-height: 1;
+    }
+
+    #footer .footer-top .footer-links ul a:hover {
+        text-decoration: none;
+        color: #3498db;
+    }
+
+    #footer .footer-newsletter {
+        font-size: 15px;
+    }
+
+    #footer .footer-newsletter h4 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        position: relative;
+        padding-bottom: 12px;
+    }
+
+    #footer .footer-newsletter form {
+        margin-top: 30px;
+        background: #fff;
+        padding: 6px 10px;
+        position: relative;
+        border-radius: 4px;
+        text-align: left;
+        border: 1px solid #b6daf2;
+    }
+
+    #footer .footer-newsletter form input[type=email] {
+        border: 0;
+        padding: 4px 8px;
+        width: calc(100% - 100px);
+    }
+
+    #footer .footer-newsletter form input[type=submit] {
+        position: absolute;
+        top: 0;
+        right: -2px;
+        bottom: 0;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px 2px 20px;
+        background: #3498db;
+        color: #fff;
+        transition: 0.3s;
+        border-radius: 0 4px 4px 0;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #footer .footer-newsletter form input[type=submit]:hover {
+        background: #57aae1;
+    }
+
+    #footer .credits {
+        padding-top: 5px;
+        font-size: 13px;
+        color: #444444;
+    }
+
+    #footer .social-links a {
+        font-size: 18px;
+        display: inline-block;
+        background: #3498db;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 50%;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+    }
+
+    #footer .social-links a:hover {
+        background: #5faee3;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+{% endblock headstuff %}
+<!-- </head> -->
+
+{% block title %}Home{% endblock title %}
+<!-- <body> -->
+{% block body %}
+
+   <!-- Navbar & Carousel Start -->
+   <div class="container-fluid position-relative p-0">
+
+  
+    <div id="header-carousel" class="carousel slide carousel-fade"  data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img class="w-100" src="/static/c111.jpg" alt="Image">
+
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h5 class="text-white text-uppercase mb-3 animated slideInDown"><b>Learn Innovative skills & Earn through them</b></h5>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn "><b>Training & Placement Platform</b>
+                  </h1>
+                        <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn</a>
+                        <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Earn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="/static/c222.jpg" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Learn Innovative skills & Earn through them</h5>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Training & Placement Platform</h1>
+                        <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn</a>
+                        <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Earn</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+  </div>
+  <!-- Navbar & Carousel End -->
+  
+
+<main id="main">
+
+
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+
+            <div class="section-title" data-aos="zoom-in">
+                <h2>Why Us</h2>
+                <h3>Why you shoud <span>choose us</span>?</h3>
+                <p>This placement environment will help you to reach your jobs and internships aiding the students get
+                    into renowned companies or skill themselves for their startup.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="box" data-aos="fade-up">
+                        <span>01</span>
+                        <h4>Download Placement & Training resources</h4>
+                        <p>Get previous year question paper, cheatsheets, notes and books that are required for your
+                            placement and internship rounds. Download & upload and help your peers.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="box" data-aos="fade-up" data-aos-delay="100">
+                        <span>02</span>
+                        <h4>Build Your Resume Instantly</h4>
+                        <p>Register with your details and you get your resume built automatically with our website. You
+                            can later customize summary too.Just with a click share your resume with the companies you want to work with .</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="box">
+                        <span>03</span>
+                        <h4> Apply for Jobs & Internships</h4>
+                        <p>Get premium fresher jobs with CTC in lakhs ,find internships from great companies to give
+                            kickstart to your career, get placed with both product based companies & service based.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
+
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-6">
+                    <div class="count-box">
+                        <i class="bi bi-emoji-smile"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Student</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="count-box">
+                        <i class="bi bi-journal-richtext"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Jobs&Internships</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-headset"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Study materials</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Companies</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Counts Section -->
+
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+        <div class="container">
+
+            <div class="section-title" data-aos="zoom-in">
+                <h2>F.A.Q</h2>
+                <h3>Frequently Asked <span>Questions</span></h3>
+
+            </div>
+
+            <div class="faq-list">
+                <ul>
+                    <li data-aos="fade-up">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                            data-bs-target="#faq-list-1">Can I trust the companies and the jobs they provide? <i
+                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                            <p>
+                                Yes, all the companies with their jobs are trusted and renowned. However, we recommend
+                                you to read the contract and terms before you sign with one.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                            data-bs-target="#faq-list-2" class="collapsed">Are the questions relevant and updated for
+                            various rounds? <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                All the previous year questions are the ones that have been asked by the companies
+                                already in different rounds of aptitude, coding, interview and hr rounds. The questions
+                                are regularly updated by our team members to equip students with relevant skills &
+                                practical exposure.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                            data-bs-target="#faq-list-3" class="collapsed">Will my data be safe and unshared? <i
+                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Your personal data will be completely safe with us and will remain unshared. Ypu can
+                                trust us 100% with your credentials.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                            data-bs-target="#faq-list-4" class="collapsed">What will be the process after selection by
+                            the companies? <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Different companies have different rounds before hiring a candidate on a respective
+                                post. We recommend you to wait for the email by the HR.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="400">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                            data-bs-target="#faq-list-5" class="collapsed">What factors should I see in a company before
+                            applying for a company? <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Do see the category of internship and minimum years of contract. We also recommend you
+                                to read the company details, whether it is a startup or a high level renowned company.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section><!-- End F.A.Q Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+  
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+  
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="/static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>Ankur Srivastava</h3>
+                  <h4>Senior Developer &amp; TCS</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    From an exhaustive way of searching jobs and placements, & upskilling ourselves with resources and materials during lockdown, when none of us knew the way of getting offcampus placements, the L&E placement environment of our department provided us with guidance to reach the renowned companies, all free, just a click away!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+  
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="/static/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <h3>Sara Rehwal</h3>
+                  <h4>Junior Developer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Lagging in completing notes, or being muddled about the about not earning was always a part of preparation until now. Be it internships or vacancies, queries or last minute preparation, everything became easy peasy with L&E!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+  
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="/static/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <h3>Jena Khan</h3>
+                  <h4>Front end  Developer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    L&E helped me pay my bills along with learning and upgrading my skilss regularly!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+  
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="/static/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <h3>Sacchin Kumar</h3>
+                  <h4>Freelancer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Apart from curriculum, what was cherry on the top was accelerating my MCA preparation with the guidance and preparation notes. L&E also made me speed through the vivas, hr rounds, and aptitudes as a brief of past questions and projects were even provided!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+  
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="/static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>Mukul Srivastava</h3>
+                  <h4>Entrepreneur</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    L&E helped me pay my bills along with learning and upgrading my skilss regularly!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+  
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+  
+        </div>
+      </section><!-- End Testimonials Section -->
+  
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container">
+
+            <div class="section-title" data-aos="zoom-in">
+                <h2>Team</h2>
+                <h3>Meet Our Passionate Team <span>Team</span></h3>
+                <p>Our efficient team of seniors is determined to provide the upcoming
+                    students with all new learning platforms incorporated with services
+                    and resources required for academic as well as practical excellence.
+                    We want each and every student to have skills as well as experiences that prevent them to be ruled
+                    out by anyone.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up">
+                        <div class="member-img">
+                            <img src="/static/img/team/team11.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Anjali Gupta</h4>
+                            <span>Django Backend Developer</span>
+                            <p>
+                                Anjali is enthusiastic about web development. She practices with
+                                various languages and has built numerous projects with them. She
+                                worked with LearnNEarn timely and progressively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member-img">
+                            <img src="/static/img/team/team.png" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Rajpriya Singh</h4>
+                            <span>Frontend Developer</span>
+                            <p>
+                                Rajpriya is a programming enthusiast who is excellent at
+                                problem-solving skills. He worked efficiently and passionately with the
+                                team to make the LearnNEarn reach its goal.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member-img">
+                            <img src="/static/img/team/team3.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Priyanshu</h4>
+                            <span>Frontend Developer</span>
+                            <p>
+                                Priyanshu aims to better with technology. His experience and work beliefs made working
+                                with him very impressive.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member-img">
+                            <img src="/static/img/team/team4444.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Bhavya Bhagwani</h4>
+                            <span>Django Backend Developer </span>
+                            <p>
+                                Bhavya is good at her presentation and writing skills and is eager to learn new skills.
+                                With her skill of writing and programming concepts she worked efficiently and
+                                passionately for LearnNEarn to make it work.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+
+
+</main><!-- End #main -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/static/vendor/aos/aos.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/static/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/static/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/static/js/main.js"></script>
+
+<!-- </body> -->
+
+{% endblock body %}

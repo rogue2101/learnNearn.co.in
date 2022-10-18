@@ -1,0 +1,597 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock title %}
+{% block headstuff %}
+
+<!-- Customized Bootstrap Stylesheet -->
+<link rel="stylesheet" href="/static/bootstrap.min.css" >
+<link rel="stylesheet" href="/static/student_dashbord_style.css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+<style>
+    #inner {
+      padding: 3px 50px;
+      background: #f5f5f5;
+      border: solid #666;
+      border-width: 8px 0 2px 0;
+    }
+
+    div {
+      display: block;
+    }
+
+    body {
+      color: #444;
+    }
+
+    #bd,
+    #ft {
+      margin-bottom: 2em;
+    }
+
+    #ft {
+      font-size: 92%;
+      border-top: 1px solid #ccc;
+      text-align: center;
+
+    }
+
+    #hd h2 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .first h2 {
+      font-style: italic;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #333;
+    }
+
+    h2 {
+      font-size: 152%;
+    }
+
+    /* user agent stylesheet  */
+    h2 {
+      display: block;
+      font-size: 1.5em;
+      margin-block-start: 0.83em;
+      margin-block-end: 0.83em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+    }
+
+    .contact-info {
+      margin-top: 7px;
+    }
+
+    a {
+      color: #990003;
+    }
+
+    /* user agent stylesheet */
+     a:-webkit-any-link {
+      color: -webkit-link;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .job h4 {
+      position: absolute;
+      top: 0.35em;
+      right: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #333;
+    }
+
+    h3,
+    h4 {
+      font-size: 122%;
+    }
+
+    /* user agent stylesheet  */
+    h4 {
+      display: block;
+      margin-block-start: 1.33em;
+      margin-block-end: 1.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+    }
+    
+
+#hd h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+h1, h2, h3, h4 {
+    color: #333;
+}
+/* user agent stylesheet */
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+  </style>
+
+
+{% endblock headstuff %}
+{% block body %}  
+{% for d in data %}
+  <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+      <div class="bg-white" id="sidebar-wrapper">
+
+        <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold border-bottom"><i
+                    class="fas fa-graduation-cap me-2"></i>Welcome</div>
+            <div class="list-group list-group-flush me-3">
+                <a id="dashboard_button" href="#dashboard" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a id="profile_button" href="#profile" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-user me-2"></i>My Profile</a>
+                <a id="resume_button" href="#resume" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-paperclip me-2"></i>Resume</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+            </div>
+            
+      </div>
+        <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Dashboard</h2>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle second-text fs-5 fw-bold" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user fs-5 me-2"></i>{{ d.sname }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'edit_details'%}">Edit details</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+              </nav>
+
+              <section class="container-fluid px-4">
+                <!-- dashboard section -->
+                <div class="row g-3 my-2" id="dashboard">
+
+                    <div class="bg-white d-flex p-2 m-2 text-center shadow rounded">
+                        <div class="col">
+                            <h3 class="fs-2 fw-bold">Applied Jobs</h3>
+                        </div>
+                        <div class="col">
+                            <h3 class="fs-2 fw-bold bordr">07</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow">
+                            <div class="p-4">
+                                <h4 class="mb-2">Software Engineer</h4>
+                                <h3 class="mb-2">Infotech</h3>                                
+                                <h6 class="mb-2">www.infotech.com</h6>
+                                <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                                <h6 class="mb-2">Sanjay Mishra</h6>
+                                <h6 class="mb-2">7456321862</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                      <div class="blog-item bg-light rounded overflow-hidden shadow">
+                          <div class="p-4">
+                              <h4 class="mb-2">Software Engineer</h4>
+                              <h3 class="mb-2">Infotech</h3>                                
+                              <h6 class="mb-2">www.infotech.com</h6>
+                              <h6 class="mb-2">infotech.hire@gmail.com</h6>
+                              <h6 class="mb-2">Sanjay Mishra</h6>
+                              <h6 class="mb-2">7456321862</h6>
+                          </div>
+                      </div>
+                  </div>
+
+                </div>
+                <!-- dashbord section ends -->
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- My Profile Section -->
+                <div class="row g-3 my-2" id="profile">
+                    <div class="bg-primary p-2 mb-2 text-center shadow rounded"><h3 class=" fs-3 fw-bold">My Profile</h3></div>
+                      <!-- personal detail -->
+                      <div class="p-2 m-2 text-center"><h3 class="fs-4 fw-bold">Personal Details</h3></div>
+                          <div class="row p-2">
+                            <div class="col">
+                                <label class="p-2">ID</label>
+                                <input type="text" class="form-control" placeholder="{{ d.collage_id }}" aria-label="ID" name="collageid" readonly>
+                            </div>
+                            <div class="col">
+                                <label class="p-2">Name</label>
+                                <input type="text" class="form-control" placeholder="{{ d.sname }}" aria-label="Name" name="sname" readonly>
+                            </div>
+                          </div>
+
+                          <div class="row p-2">
+                              <div class="col">
+                                  <label class="p-2">Father's Name</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.fname }}" aria-label="Father's Name" name="fname" readonly>
+                              </div>
+                              <div class="col">
+                                  <label class="p-2">Mother's Name</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.mname }}" aria-label="Mother's Name" name="mname" readonly>
+                              </div>
+                          </div>
+
+
+                          <div class="row p-2">
+                              <div class="col">
+                                  <label class="p-2">Date Of Birth</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.dob }}" aria-label="Date Of Birth" name="dob" readonly>
+                              </div>
+                              <div class="col">
+                                  <label class="p-2">Phone Number</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.pnum }}" aria-label="Phone Number" name="pnum" readonly>
+                                </div>
+                          </div>
+
+                          <div class="row p-2">
+                              <div class="col">
+                                  <label class="p-2">Gender</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.gender }}" aria-label="Gender" name="gender" readonly>
+                              </div>
+                              <div class="col">
+                                  <label class="p-2">State</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.state }}" aria-label="State" name="state" readonly>
+                              </div>
+                          </div>
+
+                          <div class="row p-2">
+                              <div class="col">
+                                  <label class="p-2">City</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.scity }}" aria-label="City" name="city" readonly>
+                              </div>
+                              <div class="col">
+                                  <label class="p-2">Pin Code</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.pincode }}" aria-label="Pin Code" name="pincode" readonly>
+                                </div>
+                          </div>
+
+                          <div class="row p-2">
+                              <div class="col">
+                                  <label class="p-2">Email</label>
+                                  <input type="text" class="form-control" placeholder="{{ d.semail }}" aria-label="Email" name="email" readonly>
+                              </div>
+                          </div>
+                      <!-- personal detail ends -->
+
+                      <!-- academic details -->
+                      <div class="p-2 m-2 text-center"><h3 class="fs-4 fw-bold">Academic Details</h3></div>
+
+                      <h4>Highschool Details</h4>
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">School Name</label>
+                            <input type="text" class="form-control" placeholder="{{ d.hschool }}" aria-label="School Name" name="hschool" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Session</label>
+                            <input type="text" class="form-control" placeholder="{{ d.hsession }}" aria-label="Session" name="hsession" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Percentage/CGPA</label>
+                            <input type="text" class="form-control" placeholder="{{ d.hper }}" aria-label="Percentage/CGPA" name="hper" readonly>
+                        </div>
+                    </div>
+
+
+                    <h4>Interschool Details</h4>
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">School Name</label>
+                            <input type="text" class="form-control" placeholder="{{ d.ischool }}" aria-label="School Name" name="ischool" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Session</label>
+                            <input type="text" class="form-control" placeholder="{{ d.isession }}" aria-label="Session" name="isession" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Percentage/CGPA</label>
+                            <input type="text" class="form-control" placeholder="{{ d.iper }}" aria-label="Percentage/CGPA" name="iper" readonly>
+                        </div>
+                    </div>
+
+
+                    <h4>Latest Qualification</h4>
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">Qualification Name</label>
+                            <input type="text" class="form-control" placeholder="{{ d.lqname }}" aria-label="Qualification name" name="lqname" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Qualification Type</label>
+                            <input type="text" class="form-control" placeholder="{{ d.lqtype }}" aria-label="Qualification Type" name="lqtype" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">Institute Name</label>
+                            <input type="text" class="form-control" placeholder="{{ d.intname }}" aria-label=" Institute Name" name="intname" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">Session</label>
+                            <input type="text" class="form-control" placeholder="{{ d.intsession }}" aria-label="Session" name="intsession" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="p-2">Percentage/CGPA</label>
+                            <input type="text" class="form-control" placeholder="{{ d.intper }}" aria-label="Percentage" name="intper" readonly>
+                        </div>
+                    </div>
+
+                    <!-- academic details ends -->
+
+                    <!-- skills -->
+                    <div class="p-3 m-2 text-center"><h3 class="fs-4 fw-bold">Skills</h3></div>
+                    <div class="row p-2">
+                        <div class="col">
+                            <label class="p-2">Your Skills</label>
+                            <input type="text" class="form-control" placeholder="{{ d.skills }}" aria-label="Your Skills" name="skills" readonly>
+                        </div>
+                    </div>
+                </div>
+                    <!-- skills end -->
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                <div class="row m-2" id="resume">
+                  <!-- Resume Section -->
+                  <div class="bg-primary p-2 mb-5 text-center rounded shadow"><h3 class="fs-3 fw-bold">Your Resume</h3></div>
+                  <div class="container" id="download_resume">
+                    <div id="inner">               
+                      <div id="hd">
+                        <div class="m-0">
+                          <div class="first">
+                            <h1>{{ d.sname }}</h1>
+                            <h2>{{ d.email }}</h2>
+                          </div><br><hr>
+                
+                          <div class="yui-u">
+                            <div class="contact-info">
+                              <h3><a href="mailto:name@yourdomain.com">{{ d.semail }}</a></h3>
+                              <h3>{{ d.pnum }}</h3>
+                            </div>
+                            <!--// .contact-info -->
+                          </div>
+                        </div>
+                        <!--// .yui-gc -->
+                      </div>
+                      <!--// hd -->
+                
+                      <div id="bd">
+                        <div id="yui-main">
+                          <div class="yui-b">
+                
+                            <div class="yui-gf">
+                              <div class="yui-u">
+                
+                                <div class="yui-u first">
+                                  <h4>Date of Birth : {{ d.dob }}</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <!--// .yui-gf -->
+                
+                            <hr>
+                            <div class="yui-gf">
+                              <div class="yui-u first">
+                                <h2>Skills</h2>
+                              </div>
+                              <div class="yui-u">
+                                <p>{{ d.skills }} </p>
+                              <hr>
+                              </div>
+                            </div>
+              
+              
+                            <div class="yui-gf last">
+                              <h2 class="mt-4 mb-4 fw-bold fs-2">Education</h2>
+                              <div class="yui-u first">
+                                <h2 class="fw-bold m-3 fs-4 text-decoration-underline">High School</h2>
+                              </div>
+                              <div class="yui-u d-flex row">
+                                <div class="col"><h4>School - {{ d.hschool }}</h4></div>
+                                <div class="col"><h4>Session - {{ d.hsession }}</h4></div>
+                                <div class="col"><h4>Percentage/CGPA - {{ d.hper }}</h4></div>
+                                
+                              </div>
+                            </div>
+                            <div class="yui-gf last">
+                              <div class="yui-u first">
+                                <h2 class="fw-bold m-3 fs-4 text-decoration-underline">Interschool</h2>
+                              </div>
+                              <div class="yui-u d-flex row">
+                                <div class="col"><h4>School - {{ d.ischool }}</h4></div>
+                                <div class="col"><h4>Session - {{ d.isession }}</h4></div>
+                                <div class="col"><h4>Percentage/CGPA - {{ d.iper }}</h4></div>
+                                <!-- <h3>Dual Major, Economics and English — <strong>4.0 GPA</strong> </h3> -->
+                              </div>
+                            </div>
+                            <div class="yui-gf last">
+                              <div class="yui-u first">
+                                <h2 class="fw-bold m-3 fs-4 text-decoration-underline">Latest Qualification</h2>
+                              </div>
+                              <div class="yui-u d-flex row">
+                                <div class="col"><h4>Qualification Name - {{ d.lqname }}</h4></div>
+                                <div class="col"><h4>Qualification Type - {{ d.lqtype }}</h4></div>
+                                <div><h4>Institute Name- {{ d.intname }}</h4></div>
+                                <div class="col"><h4>Session - {{ d.intsession }}</h4></div>
+                                <div class="col"><h4>Percentage/CGPA - {{ d.intper }}</h4></div>
+                                <!-- <h3>Dual Major, Economics and English — <strong>4.0 GPA</strong> </h3> -->
+                              </div>
+                            </div><hr>
+                            <div class="yui-gf last">
+                              <h2 class="fw-bold m-3 fs-4">Address</h2>
+                              <div class="yui-u first">
+                                <h4>City -{{ d.scity }}</h4>
+                              </div>
+                              <div class="yui-u">
+                                <h4>State - {{ d.state }}</h4>
+                                <h4>Pincode - {{ d.pincode }}</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div id="ft">
+                        <p><h3>{{ d.name }}<a href="mailto:{{ d.semail }}">{{ d.semail }}</a> — {{ d.pnum }}</h3></p>
+                      </div>
+                      <!--// footer -->
+                
+                    </div>
+                  </div>
+                               
+                  <div class="m-5 text-center">
+                    <button class="btn btn-primary btn-lg" id="download" type="submit">Download Your Resume</button>
+                  </div>
+                </div>
+              </section>
+      </div>
+      <!-- /#page-content-wrapper -->
+  </div>
+
+
+  <script>
+        window.onload = function () {
+        document.getElementById("download").addEventListener("click", () => {
+            const download_resume = this.document.getElementById("download_resume");
+            var opt = {
+              margin: 0,
+              filename: '{{ d.sname }} Resume.pdf'
+            };
+            html2pdf().from(download_resume).set(opt).save();
+        })
+}
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+    {% endfor %}
+    {% endblock body %}
+

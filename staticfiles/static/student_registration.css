@@ -1,0 +1,118 @@
+.input-container{
+    position:relative;
+   margin-bottom:20px;
+   }
+   .input-label{
+       position:absolute;
+       top:0px;
+       left:5px;
+       font-size:16px;
+       color: #ffffff;	
+       pointer-events:none;
+       transition: all 0.5s ease-in-out;
+   }
+   .txtinp{ 
+     border:0;
+     border-bottom:1px solid #555;  
+     background:transparent;
+     width:100%;
+     padding:8px 0 5px 0;
+     font-size:16px;
+     color:#fff;
+   }
+   .txtinp:focus{ 
+    border:none;	
+    outline:none;
+    border-bottom:1px solid white;	
+   }
+
+   .txtinp:focus ~ .input-label,
+   .txtinp:valid ~ .input-label{
+   top:-12px;
+   font-size:12px;
+
+   }
+
+
+   .menu-item{
+
+       border:0;
+     border-bottom:1px solid #555;  
+     background:transparent;
+     width:100%;
+     padding:8px 0 5px 0;
+     font-size:16px;
+     color:#fff;
+     
+   }
+
+   .regimg{
+      width:125px; 
+      height:125px;
+      border-radius: 50%;
+   }
+
+   .bgimg {
+       background-color: rgba(9, 30, 62, .7);
+   }
+
+   .txtbox{
+
+       color: mediumorchid;
+
+   }
+
+   .conbx{
+
+       box-shadow: 1px 1px 15px 2px #000000;
+       margin: 100px;
+
+   }
+
+   .registration_img
+   {
+    background-image: url(/static/register1.jpg);
+   }
+   .regtxt1{
+
+
+       font-size:50px;
+
+   }
+   .regtxt2{
+
+       font-size: 30px;
+
+   }
+   .button
+   {
+       margin: 10px;
+       height: 6vh;
+       width: 20vh;
+       background-color: transparent;
+       border-color: #fff;
+       color: #fff;
+       border-radius: 30px;
+       transition: all 0.5s ease-in-out;
+       
+   }
+   .button:hover{
+       background-color: #fff;
+       color: #000000;
+   }
+   
+   @media only screen and (min-width:600px)
+   {
+       .button{
+       height: 8vh;
+       width: 20vw;
+       }
+   }
+
+   @media only screen and (min-width:768px)
+   {
+       .button{
+       height: 8vh;
+       width: 14vw;
+       }
+   }
